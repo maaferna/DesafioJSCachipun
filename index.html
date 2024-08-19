@@ -9,27 +9,30 @@
 </head>
 <body>
 
-<div class="container text-center">
-    <h1>Cachipún contra la máquina</h1>
-    <div class="form-group">
-        <label for="numRounds">¿Cuántas veces quieres jugar?</label>
-        <input type="number" id="numRounds" class="form-control" min="1" max="10" placeholder="Ingrese el número de rondas">
-    </div>
+<div class="container mt-5">
+    <div class="card shadow-lg p-4">
+        <h1 class="text-center text-primary">Cachipún contra la máquina</h1>
 
-    <div class="form-group">
-        <label for="userChoice">Elige tu jugada:</label>
-        <select id="userChoice" class="form-control">
-            <option value="0">Piedra</option>
-            <option value="1">Papel</option>
-            <option value="2">Tijera</option>
-        </select>
-    </div>
+        <div class="form-group mt-4">
+            <label for="numRounds" class="form-label">¿Cuántas veces quieres jugar?</label>
+            <input type="number" id="numRounds" class="form-control" min="1" max="10" placeholder="Ingrese el número de rondas">
+        </div>
 
-    <button id="playButton" class="btn btn-primary">Jugar</button>
+        <div class="form-group mt-3">
+            <label for="userChoice" class="form-label">Elige tu jugada:</label>
+            <select id="userChoice" class="form-control">
+                <option value="0">Piedra</option>
+                <option value="1">Papel</option>
+                <option value="2">Tijera</option>
+            </select>
+        </div>
 
-    <div id="gameResult" class="game-result">
-        <h2>Resultados:</h2>
-        <div id="resultText"></div>
+        <button id="playButton" class="btn btn-success mt-4 w-100">Jugar</button>
+
+        <div id="gameResult" class="game-result mt-4">
+            <h2 class="text-center">Resultados:</h2>
+            <div id="resultText" class="text-left"></div>
+        </div>
     </div>
 </div>
 

@@ -58,15 +58,18 @@ document.addEventListener('DOMContentLoaded', () => {
         // Actualiza los contadores de victorias y empates según el resultado de la ronda.
         if (result === 'user') {
             userWins++;
+            resultClass = 'text-success'; // Verde si gana el usuario
         } else if (result === 'machine') {
             machineWins++;
+            resultClass = 'text-danger'; // Rojo si gana la máquina
         } else {
             draws++;
+            resultClass = 'text-secondary'; // Plomo si es empate
         }
 
         // Actualiza el DOM con los resultados de la ronda actual
         resultText.innerHTML += `
-            <p>Ronda ${round + 1}: Tú elegiste ${choiceToString(userChoice)}, la máquina eligió ${choiceToString(machineChoice)}. ${result === 'user' ? '¡Ganaste!' : result === 'machine' ? 'Perdiste.' : 'Empate.'}</p>
+            <p class="${resultClass}">Ronda ${round + 1}: Tú elegiste ${choiceToString(userChoice)}, la máquina eligió ${choiceToString(machineChoice)}. ${result === 'user' ? '¡Ganaste!' : result === 'machine' ? 'Perdiste.' : 'Empate.'}</p>
         `;
     }
 
@@ -120,19 +123,21 @@ document.addEventListener('DOMContentLoaded', () => {
      * @param {number} draws - El número total de rondas que terminaron en empate.
      */
     function displayFinalResults(userWins, machineWins, draws) {
+        const finalResultClass = userWins > machineWins ? 'text-success' : machineWins > userWins ? 'text-danger' : 'text-secondary';
+
         resultText.innerHTML += `
             <hr>
             <!-- Muestra el número total de rondas ganadas por el usuario -->
-            <p>Rondas ganadas por el usuario: ${userWins}</p>
+            <p class="text-success">Rondas ganadas por el usuario: ${userWins}</p>
             
             <!-- Muestra el número total de rondas ganadas por la máquina -->
-            <p>Rondas ganadas por la máquina: ${machineWins}</p>
+            <p class="text-danger">Rondas ganadas por la máquina: ${machineWins}</p>
             
             <!-- Muestra el número total de rondas que terminaron en empate -->
-            <p>Empates: ${draws}</p>
+            <p class="text-secondary">Empates: ${draws}</p>
 
             <!-- Determina y muestra el resultado final del juego con un mensaje personalizado dependiendo de quién ganó más rondas -->
-            <p>${userWins > machineWins ? '¡Felicidades! Ganaste el juego.' : machineWins > userWins ? 'Perdiste contra la máquina.' : 'El juego terminó en empate.'}</p>  
+            <p class="${finalResultClass}">${userWins > machineWins ? '¡Felicidades! Ganaste el juego.' : machineWins > userWins ? 'Perdiste contra la máquina.' : 'El juego terminó en empate.'}</p>  
         `;
     }
 
